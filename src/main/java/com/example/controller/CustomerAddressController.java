@@ -34,7 +34,7 @@ public class CustomerAddressController {
         return new ResponseEntity<>(message, HttpStatus.OK);
     }
 	
-	@GetMapping(value = "/getCustomerAddress/{customerId}")
+	@GetMapping(value = "/{customerId}")
 	private ResponseEntity<AddressResponseDto> getCustomerAddress(@PathVariable Integer customerId) {
 		 logger.info("Received request to get customer address: {}", customerId);
 		AddressResponseDto customerAddress = addressService.getCustomerAddress(customerId);
@@ -46,9 +46,11 @@ public class CustomerAddressController {
 			return new ResponseEntity<AddressResponseDto>(HttpStatus.NO_CONTENT);
 	}
 	
-	@DeleteMapping(value = "/deleteCustomerAddress/{customerId}")
+	@DeleteMapping("/{customerId}")
 	private ResponseEntity<String> deleteCustomerAddress(@PathVariable Integer customerId) {
+		 logger.warn("Delete request to get customer address: {}", customerId);
 		String message = addressService.deleteCustomerAddress(customerId);
+		 logger.warn("Successfully get customer address.");
 		return new ResponseEntity<String>(message, HttpStatus.OK);
 	}
 	
