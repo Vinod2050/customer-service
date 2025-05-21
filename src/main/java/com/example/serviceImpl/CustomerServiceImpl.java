@@ -174,7 +174,7 @@ public class CustomerServiceImpl implements CustomerService {
 
 	    // Fetch customer by ID
 	    Optional<Customer> customerOpt = customerRepository.findById(customerId);
-	    if (customerOpt.isEmpty()) {
+	    if (customerOpt.isPresent()) {
 	        logger.warn("Customer not found for customerId: {}", customerId);
 	        return "Customer Not Found";
 	    }
@@ -316,7 +316,10 @@ public class CustomerServiceImpl implements CustomerService {
 	            loanDto.setCibilScore(customer.getCibilScore());
 	            loanDto.setIsCustometrVerified(true);
 	            loanDto.setIsDocumentVerified(verification.getIsAllDocumentVerified());
-
+	            loanDto.setCustomerEmail(customer.getCustomerEmail());
+                loanDto.setFirstName(customer.getFirstName());
+                loanDto.setLastName(customer.getLastName());
+                
 	            loanFeignClient.addApplicant(loanDto);
 
 	            return "Application Data Sent to Loan Service";

@@ -11,6 +11,9 @@ import lombok.Data;
 public class ApplyLoanDTO {
 	
 	private Integer customerId;
+	private String firstName;
+	private String lastName;
+	private String customerEmail;
 	private Integer cibilScore;
 	private Boolean IsDocumentVerified ;
 	private Boolean IsCustometrVerified;

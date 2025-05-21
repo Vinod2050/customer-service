@@ -31,7 +31,7 @@ public class DocumentServiceImpl implements DocumentService {
         logger.info("Starting document upload for customerId: {}", customerId);
 
         Optional<Customer> customerOpt = customerRepository.findById(customerId);
-        if (customerOpt.isEmpty()) {
+        if (customerOpt.isPresent()) {
             logger.warn("Customer not found for customerId: {}", customerId);
             return "Customer Not Found";
         }
@@ -91,7 +91,7 @@ public class DocumentServiceImpl implements DocumentService {
         logger.info("updateDocument called for customerId: {}", customerId);
 
         Optional<Customer> customerOpt = customerRepository.findById(customerId);
-        if (customerOpt.isEmpty()) {
+        if (customerOpt.isPresent()) {
             logger.warn("Customer not found with ID: {}", customerId);
             return "Customer Not Found";
         }
@@ -154,7 +154,7 @@ public class DocumentServiceImpl implements DocumentService {
         logger.info("deleteDocument called for customerId: {}", customerId);
 
         Optional<Customer> customerOpt = customerRepository.findById(customerId);
-        if (customerOpt.isEmpty()) {
+        if (customerOpt.isPresent()) {
             logger.warn("Customer not found for customerId: {}", customerId);
             return "Customer Not Found";
         }
@@ -176,7 +176,7 @@ public class DocumentServiceImpl implements DocumentService {
         logger.info("verifyDocument called for customerId: {}", customerId);
 
         Optional<Customer> customerOpt = customerRepository.findById(customerId);
-        if (customerOpt.isEmpty()) {
+        if (customerOpt.isPresent()) {
             logger.warn("Customer not found for customerId: {}", customerId);
             return "Customer Not Found";
         }
